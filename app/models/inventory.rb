@@ -1,4 +1,5 @@
 class Inventory < ApplicationRecord
-    belongs_to :user, foreign_key: "user_id"
-    has_many :inventory_foods, foreign_key: "inventory_food_id"
+  belongs_to :user
+  has_many :inventory_foods
 end
+  
