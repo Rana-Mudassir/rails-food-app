@@ -7,15 +7,15 @@ default: &default
 
 development:
   <<: *default
-  database: rails_group_capstone_development1
+  database: rails_group_capstone_development3
 
 
 test:
   <<: *default
-  database: rails_group_capstone_test1
+  database: rails_group_capstone_test3
 
 production:
   <<: *default
-  database: rails_group_capstone_production1
+  database: rails_group_capstone_production3
   username: mudassir_nazir
   password: 1234
