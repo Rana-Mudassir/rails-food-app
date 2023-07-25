@@ -1,7 +1,24 @@
 <% if current_user %>
-  <li class="mx-3 text-lg font-semibold hover:text-orange-500 text-orange-500">
-    <%= button_to 'Sign Out', destroy_user_session_path, method: :delete, redirect_to: root_path %>
-  </li>
+<div class="relative inline-block">
+  <!-- Dropdown button -->
+  <button class="text-lg font-semibold text-orange-500 hover:text-orange-500" type="button">
+    Options
+  </button>
+  <!-- Dropdown content -->
+  <ul class="absolute hidden bg-white shadow-lg w-40">
+    <!-- Option 1: Sign Out -->
+    <li class="text-md font-semibold hover:text-orange-500 py-3 text-orange-500 hover:bg-gray-200">
+      <%= button_to 'Sign Out', destroy_user_session_path, method: :delete, redirect_to: root_path %>
+    </li>
+    <div class="border-t border-gray-200"></div>
+    <!-- Option 2: Edit User -->
+    <li class="text-md font-semibold hover:text-orange-500 py-3 text-orange-500 hover:bg-gray-200">
+      <%= button_to 'Edit User', destroy_user_session_path, method: :delete, redirect_to: root_path %>
+    </li>
+  </ul>
+</div>
+
+  
 <% else %>
   <li class="mx-3 text-lg font-semibold hover:text-orange-500">
     <%= link_to "Sign In", new_user_session_path, class: "nav-link active text-green-500" %>
