@@ -1,0 +1,33 @@
+<div class="container mx-auto max-w-md">
+  <div class="mb-6 flex justify-end"> 
+    <% if current_user %>
+    <%= link_to "Add Food", new_food_path, class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4" %>
+    <% end %>
+  </div>
+  <table class="w-full border-collapse border border-gray-400">
+    <thead>
+      <tr class="bg-gray-200">
+        <th class="border border-gray-400 px-4 py-2">Food</th>
+        <th class="border border-gray-400 px-4 py-2">Measurement unit</th>
+        <th class="border border-gray-400 px-4 py-2">Unit price</th>
+        <th class="border border-gray-400 px-4 py-2">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @foods.each do |food| %>
+        <tr>
+          <td class="border border-gray-400 px-4 py-2"><%= food.name %></td>
+          <td class="border border-gray-400 px-4 py-2"><%= food.measurement_unit %></td>
+          <td class="border border-gray-400 px-4 py-2">$<%= food.price %></td>
+          <td class="border border-gray-400 px-4 py-2">
+            <% if current_user %>
+             <%= button_to "DELETE", [food], method: :delete, class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %>
+             <% else %>
+             <p>N/A</p>
+            <% end %> 
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
