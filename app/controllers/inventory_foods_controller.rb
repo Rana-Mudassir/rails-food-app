@@ -15,6 +15,7 @@ class InventoryFoodsController < ApplicationController
       @foods = Food.all
       render :new
     end
+    puts create
   end
 
   def destroy
