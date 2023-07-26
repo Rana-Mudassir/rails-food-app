@@ -13,28 +13,27 @@ class InventoriesController < ApplicationController
       end
 
       def create
-        @inventory = current_user.inventories.new(inventory_params)
-        if @inventory.save
-          redirect_to inventory_path(@inventory), notice: 'Inventory was successfully created.'
-        else
-          render :new
+        @inventory = Inventory.new(inventory_params)
+        respond_to do |format|
+          if @inventory.save
+            format.html { redirect_to inventory_path(@inventory), notice: 'Inventory was successfully created.' }
+            format.json { render :show, status: :created, location: @inventory }
+          else
+            format.html { render :new, status: :unprocessable_entity }
+            format.json { render json: @inventory.errors, status: :unprocessable_entity }
+          end
         end
       end
 
 
-      def destroy
-        @inventory = Inventory.find(params[:id])
-        if @inventory.user == current_user
-          @inventory.destroy
-          redirect_to inventories_path, notice: 'Inventory was successfully deleted.'
-        else
-          redirect_to inventories_path, alert: 'You do not have permission to delete this inventory.'
-        end
+      def destroy        
+        @inventory.destroy
+        redirect_to inventories_url, notice: 'Inventory was successfully destroyed.'
       end
 
       private
 
       def inventory_params
-        params.require(:inventory).permit(:name, :description)
+        params.require(:inventory).permit(:name)
       end
     end
