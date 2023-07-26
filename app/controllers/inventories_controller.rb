@@ -13,10 +13,12 @@ class InventoriesController < ApplicationController
   end
 
   def create
-    @inventory = Inventory.new(inventory_params)
+    @user = current_user
+    @inventory = @user.inventories.build(inventory_params)
+
     respond_to do |format|
       if @inventory.save
-        format.html { redirect_to inventory_path(@inventory), notice: 'Inventory was successfully created.' }
+        format.html { redirect_to inventories_path, notice: 'Inventory was successfully created.' }
         format.json { render :show, status: :created, location: @inventory }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -26,6 +28,8 @@ class InventoriesController < ApplicationController
   end
 
   def destroy
+    @inventory = Inventory.find_by(id: params[:id])
+
     if @inventory
       @inventory.destroy
       respond_to do |format|
@@ -39,7 +43,6 @@ class InventoriesController < ApplicationController
       end
     end
   end
-  
 
   private
 
