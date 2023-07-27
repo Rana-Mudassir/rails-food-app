@@ -12,9 +12,9 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
     devise_parameter_sanitizer.permit(:account_update, keys: [:name])
-  end 
-  
+  end
+
   def has_permission?(action, resource)
     # Your implementation goes here
-  end  
+  end
 end

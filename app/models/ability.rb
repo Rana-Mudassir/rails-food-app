@@ -9,9 +9,7 @@ class Ability
       return
     end
 
-    if user.admin?
-      can :manage, :all
-    end
+    can :manage, :all if user.admin?
 
     can :read, Recipe, public: true
     can :manage, Recipe, user_id: user.id
