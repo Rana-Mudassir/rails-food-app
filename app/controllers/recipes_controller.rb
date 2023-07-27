@@ -25,8 +25,8 @@ class RecipesController < ApplicationController
         format.html { redirect_to recipes_path, notice: 'Recipe Created Successfully' }
         format.json { render :show, status: :created, location: @recipe }
       else
-        format.html { render :new, status: :unprocessable_entity }  
-        format.json { render json: @recipe.errors, status: :unprocessable_entity }  
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @recipe.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -49,4 +49,3 @@ class RecipesController < ApplicationController
     params.require(:recipe).permit(:name, :preparation_time, :cooking_time, :description, :public, :user)
   end
 end
-
