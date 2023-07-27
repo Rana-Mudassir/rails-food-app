@@ -1,15 +1,13 @@
 class InventoriesController < ApplicationController
   def index
-    @inventories = if current_user.nil?
-                     []
-                   else
-                     current_user.inventories
-                   end
+    @inventories = Iventory.all
   end
 
   def show
-    @inventory = Inventory.find(params[:id])
-    @inventory_foods = @inventory.inventory_foods.includes(:food)
+    @inventory = Inventory.includes(inventory_foods: :food).find(params[:id])
+    @inventory_id = @inventory.id
+    @inventories = Inventory.all
+    render :show
   end
 
   def destroy

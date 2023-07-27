@@ -3,10 +3,11 @@
     <h1 class="text-2xl font-semibold text-center"><%= @inventory.name %></h1>
     
     <div class="flex justify-end mt-3">
-      <%= button_to 'Add food', "/inventories/#{params[:id]}/inventory_foods/new", method: :get, class: 'py-3 px-6 bg-blue-500 mb-3 text-white hover:bg-blue-700' %>
+      <%= link_to 'Add food', new_inventory_inventory_food_path(inventory_id: @inventory_id) %>
     </div>
     
     <table  class="min-w-full table-auto border bg-white mt-2">
+    <% if @inventory_food.any? %>
       <thead class="bg-gray-400 text-white">
         <tr>
           <th class="py-3 text-left px-5 font-semibold">Food</th>
@@ -15,7 +16,7 @@
         </tr>
       </thead>
         <tbody>
-            <% @inventory_foods.each do |inventory_food| %>
+            <% @inventory.inventory_foods.each do |inventory_food| %>
             <tr class="hover:bg-gray-200 border">
               <td class="right py-3 px-5"><%= inventory_food.food.name %></td>
               <td class="right py-3 px-5"><%= "#{inventory_food.quantity} #{inventory_food.food.measurement_unit}" %></td>
@@ -23,6 +24,7 @@
             </tr>
           <% end %>
         </tbody>
+        <% end %>
     </table>
    </div>
 </div>

@@ -1,10 +1,12 @@
 class InventoryFoodsController < ApplicationController
   def new
-    @new_inventory_food = InventoryFood.new
+    @inventory = Inventory.find(params[:inventory_id])
+    @inventory_food = InventoryFood.new(inventory_id: params[:inventory_id] )
   end
 
   def create
-    inventory_food = InventoryFood.new(inventory_food_params)
+    @inventory = Inventory.find(params[:inventory_id])
+    @inventory_food = @inventory.inventory_food.build(inventory_food_params)
     respond_to do |format|
       if inventory_food.save
         flash[:notice] = 'Created an inventory food succesfully'
