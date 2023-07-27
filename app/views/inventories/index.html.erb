@@ -19,7 +19,7 @@
               <%= inventory.name %>
             </a>
           </p>
-          <%= button_to 'Remove', '/inventories/' + inventory.id.to_s, method: :delete, class: 'text-red-400 hover:text-red-300' %>
+          <%= button_to 'Delete', '/inventories/' + inventory.id.to_s, method: :delete, class: 'text-red-400 hover:text-red-300' %>
         </li>
       <% end %>
     </ul>
