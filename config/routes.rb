@@ -13,7 +13,13 @@ Rails.application.routes.draw do
   resources :foods
   resources :public_recipes, only: %i[index]
 
-  # get 'users/index'
+
+  resources :recipes do 
+    resources :recipe_foods, only: %i[create destroy new]
+  end
+
+  #get 'users/index'
+
 
   root "pages#home"
 
