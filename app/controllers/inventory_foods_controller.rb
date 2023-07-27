@@ -1,36 +1,38 @@
 class InventoryFoodsController < ApplicationController
-  before_action :set_inventory
-
   def new
-    @inventory_food = @inventory.inventory_foods.build
-    @foods = Food.all
+    @new_inventory_food = InventoryFood.new
   end
 
   def create
-    @inventory_food = @inventory.inventory_foods.build(inventory_food_params)
-
-    if @inventory_food.save
-      redirect_to inventory_path(@inventory), notice: 'Food linked to inventory successfully!'
-    else
-      @foods = Food.all
-      render :new
+    inventory_food = InventoryFood.new(inventory_food_params)
+    respond_to do |format|
+      if inventory_food.save
+        flash[:notice] = 'Created an inventory food succesfully'
+        format.html { redirect_to "/inventories/#{params[:id]}" }
+      else
+        flash[:notice] = 'Failed to create an inventory food. Try again'
+        format.html { redirect_to "/inventories/#{params[:id]}/inventory_foods/new" }
+      end
     end
-    puts create
+  rescue Exception => e
+    flash[:notice] = e.message
+    redirect_to not_found_path
   end
 
   def destroy
-    @inventory_food = @inventory.inventory_foods.find(params[:id])
-    @inventory_food.destroy
-    redirect_to inventory_path(@inventory), notice: 'Inventory food deleted successfully!'
+    inventory_food = InventoryFood.find(params[:id])
+    inventory = inventory_food.inventory
+    inventory_food.destroy
+    flash[:notice] = 'Inventory food was successfully removed'
+    redirect_to "/inventories/#{inventory.id}"
+  rescue Exception => e
+    flash[:notice] = e.message
+    redirect_to not_found_path
   end
 
   private
 
-  def set_inventory
-    @inventory = Inventory.find(params[:inventory_id])
-  end
-
   def inventory_food_params
-    params.require(:inventory_food).permit(:food_id, :quantity, :quantity_unit)
+    params.require(:inventory_food).permit(:inventory_id, :food_id, :quantity)
   end
 end

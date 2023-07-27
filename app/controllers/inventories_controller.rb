@@ -1,52 +1,48 @@
 class InventoriesController < ApplicationController
   def index
-    @inventories = Inventory.all
+    @inventories = if current_user.nil?
+                     []
+                   else
+                     current_user.inventories
+                   end
   end
 
   def show
     @inventory = Inventory.find(params[:id])
-    @food = Food.new
-  end
-
-  def new
-    @inventory = Inventory.new
-  end
-
-  def create
-    @user = current_user
-    @inventory = @user.inventories.build(inventory_params)
-
-    respond_to do |format|
-      if @inventory.save
-        format.html { redirect_to inventories_path, notice: 'Inventory was successfully created.' }
-        format.json { render :show, status: :created, location: @inventory }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @inventory.errors, status: :unprocessable_entity }
-      end
-    end
+    @inventory_foods = @inventory.inventory_foods.includes(:food)
+  rescue Exception => e
+    flash[:notice] = e.message
+    redirect_to not_found_path
   end
 
   def destroy
-    @inventory = Inventory.find_by(id: params[:id])
-
-    if @inventory
-      @inventory.destroy
-      respond_to do |format|
-        format.html { redirect_to inventories_url, notice: 'Inventory was successfully destroyed.' }
-        format.json { head :no_content }
-      end
-    else
-      respond_to do |format|
-        format.html { redirect_to inventories_url, notice: 'Inventory does not exist.' }
-        format.json { head :no_content }
-      end
-    end
+    current_user.inventories.find(params[:id]).destroy
+    flash[:notice] = 'Inventory was successfully removed'
+    splitted_path = request.path.split('/')
+    splitted_path.pop
+    redirect_to splitted_path.join('/')
+  rescue Exception => e
+    flash[:notice] = e.message
+    redirect_to not_found_path
   end
 
-  private
+  def new
+    @new_inventory = Inventory.new
+  end
 
-  def inventory_params
-    params.require(:inventory).permit(:name)
+  def create
+    inventory = Inventory.new(user: current_user, name: params[:inventory][:name])
+    respond_to do |format|
+      if inventory.save
+        flash[:notice] = 'Created an inventory succesfully'
+        format.html { redirect_to '/inventories' }
+      else
+        flash[:notice] = 'Failed to create an inventory. Try again'
+        format.html { redirect_to '/inventories/new' }
+      end
+    end
+  rescue Exception => e
+    flash[:notice] = e.message
+    redirect_to not_found_path
   end
 end
