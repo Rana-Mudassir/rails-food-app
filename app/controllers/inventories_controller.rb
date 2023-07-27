@@ -1,21 +1,24 @@
 class InventoriesController < ApplicationController
   def index
-    @inventories = Iventory.all
+    @inventories = Inventory.all
   end
 
   def show
     @inventory = Inventory.includes(inventory_foods: :food).find(params[:id])
     @inventory_id = @inventory.id
-    @inventories = Inventory.all
-    render :show
+    @inventory_food = @inventory.inventory_foods
   end
 
   def destroy
-    current_user.inventories.find(params[:id]).destroy
-    flash[:notice] = 'Inventory was successfully removed'
-    splitted_path = request.path.split('/')
-    splitted_path.pop
-    redirect_to splitted_path.join('/')
+    @inventory = Inventory.find(params[:id])
+
+    if @inventory.destroy
+      flash[:notice] = 'Inventory deleted successfully!'
+      redirect_to inventories_path
+    else
+      flash[:alert] = 'Failed to delete the inventory. Please try again.'
+      redirect_to inventory_path(@inventory)
+    end
   end
 
   def new

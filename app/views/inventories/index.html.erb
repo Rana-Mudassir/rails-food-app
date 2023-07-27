@@ -12,16 +12,16 @@
   <% end %>
 
     <ul class="mt-4">
-      <% @inventories.each do |inventory| %>
-        <li class="border flex items-center justify-between py-3 px-4 mb-4">
-          <p>
-            <a href="<%= '/inventories/' + inventory.id.to_s %>" class="font-semibold text-xl">
-              <%= inventory.name %>
-            </a>
-          </p>
-          <%= button_to 'Delete', '/inventories/' + inventory.id.to_s, method: :delete, class: 'text-red-400 hover:text-red-300' %>
-        </li>
-      <% end %>
-    </ul>
+  <% @inventories.each do |inventory| %>
+    <li class="border flex items-center justify-between py-3 px-4 mb-4">
+      <p>
+        <a href="<%= inventory_path(inventory) %>" class="font-semibold text-xl">
+          <%= inventory.name %>
+        </a>
+      </p>
+      <%= button_to 'Delete', inventory_path(inventory), method: :delete, data: { confirm: 'Are you sure you want to delete this inventory?' }, class: 'text-red-400 hover:text-red-300' %>
+    </li>
+  <% end %>
+</ul>
   </div>
 </div>

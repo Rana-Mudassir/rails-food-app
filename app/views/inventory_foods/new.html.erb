@@ -1,16 +1,19 @@
 <div class="flex justify-center mt-48 mb-48 container mx-auto">
   <div class="w-3/5 bg-white shadow-lg p-10">
-    <%= form_with model: @new_inventory_food, url: "/inventories/#{params[:id]}/inventory_foods" do |form| %>
-      <%= form.hidden_field :inventory_id, value: params[:id] %>
-      <div class="flex justify-between items-center">
-        <div class="border py-2 px-4">
-          <%= form.number_field :quantity, placeholder: 'Quantity', step: :any %>
+    <%= form_with model: @inventory_food, url: inventory_inventory_foods_path(@inventory) do |f| %>
+      <div class="mb-4 flex justify-between items-center">
+        <div class="mr-4">
+          <%= f.label :food_id, "Food:" %>
+          <%= f.collection_select :food_id, @foods, :id, :name, { prompt: "Select a food" }, class: "form-control custom-select", required: true %>
         </div>
-        <div class="border py-2 px-4">
-          <%= form.collection_select :food_id, Food.order(:name), :id, :name, prompt: true %>
+        <div>
+          <%= f.label :quantity %>
+          <%= f.number_field :quantity, autofocus: true, autocomplete: "quantity", class: "form-control custom-border", required: true %>
         </div>
       </div>
-      <%= form.submit class: 'py-3 px-8 bg-blue-500 text-white hover:bg-blue-700 cursor-pointer mt-5' %>
+      <div class="flex justify-center">
+        <%= f.submit "Add Food", class: "btn btn-outline-dark btn-sm bg-blue-500 hover:bg-blue-700 text-white mt-5 py-2 px-6" %>
+      </div>
     <% end %>
   </div>
 </div>
