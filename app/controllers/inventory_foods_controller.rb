@@ -1,7 +1,7 @@
 class InventoryFoodsController < ApplicationController
   def new
     @inventory = Inventory.find(params[:inventory_id])
-    @inventory_food = InventoryFood.new(inventory_id: params[:inventory_id] )
+    @inventory_food = InventoryFood.new(inventory_id: params[:inventory_id])
     @foods = Food.all
   end
 
