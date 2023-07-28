@@ -23,11 +23,11 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>  
   host: localhost
   username: postgres
-  password: Pari@1209
+  password: admin123
 
 development:
   <<: *default
-  database: rails-group-project-2
+  database: rails-group-project-4
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -61,7 +61,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: rails-group-project-test-2
+  database: rails-group-project-test-4
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -85,6 +85,6 @@ test:
 #
 production:
   <<: *default
-  database: rails-group-project-2
-  username: rails-group-project-2
+  database: rails-group-project-4
+  username: rails-group-project-4
   password: <%= ENV["rails_group_project_DATABASE_PASSWORD"] %>

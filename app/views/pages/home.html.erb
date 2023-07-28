@@ -1,5 +1,3 @@
-<!-- app/views/pages/home.html.erb -->
-
 <main class="container mx-auto px-4 py-8">
   <h2 class="text-4xl font-bold mb-8 text-center text-gray-800">Welcome</h2>
   <div class="bg-gradient-to-r from-indigo-500 to-pink-500 p-8 rounded-lg shadow-lg mb-8">
@@ -9,17 +7,18 @@
   </div>
 
   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-    <!-- Example card for reference -->
+    <!-- Card 1 -->
     <div class="bg-white shadow-md rounded-lg">
       <img src="https://plus.unsplash.com/premium_photo-1676489233067-9c8beb24f2a4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Delicious Chocolate Cake" class="h-64 w-full object-cover rounded-t-lg">
       <div class="p-6">
         <h3 class="text-xl font-bold mb-2 text-gray-800">Delicious Chocolate Cake</h3>
         <p class="text-gray-600 mb-4">Indulge in the rich and moist chocolate cake, perfect for any occasion.</p>
         <%= link_to "Create Food", foods_path, class: 'bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-full' %>
+        <%= link_to "Create Recipe", new_recipe_path, class: 'px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300' %>
+        <%= link_to "Create Inventory", new_inventory_path, class: 'mt-2 px-4 py-2 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-600 focus:outline-none focus:ring focus:border-green-300' %>
       </div>
     </div>
 
-    <!-- Add more featured recipe cards here -->
     <!-- Card 2 -->
     <div class="bg-white shadow-md rounded-lg">
       <img src="https://images.unsplash.com/photo-1611599537845-1c7aca0091c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Tasty Pasta Carbonara" class="h-64 w-full object-cover rounded-t-lg">
@@ -27,6 +26,8 @@
         <h3 class="text-xl font-bold mb-2 text-gray-800">Tasty Pasta Carbonara</h3>
         <p class="text-gray-600 mb-4">Enjoy the creamy and savory flavors of this classic Italian dish.</p>
         <%= link_to "Create Food", foods_path, class: 'bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-full' %>
+        <%= link_to "Create Recipe", new_recipe_path, class: 'px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300' %>
+        <%= link_to "Create Inventory", new_inventory_path, class: 'mt-2 px-4 py-2 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-600 focus:outline-none focus:ring focus:border-green-300' %>
       </div>
     </div>
 
@@ -35,12 +36,15 @@
       <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80" alt="Refreshing Lemonade" class="h-64 w-full object-cover rounded-t-lg">
       <div class="p-6">
         <h3 class="text-xl font-bold mb-2 text-gray-800">Refreshing Lemonade</h3>
-        <p class="text-gray-600 mb-4">Quench your thirst with this tangy and refreshing lemonade.</p>
+        <p class="text-gray-600 mb-4">Quench your thirst with this tangy and refreshing lemonade and cold.</p>
         <%= link_to "Create Food", foods_path, class: 'bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-full' %>
+        <%= link_to "Create Recipe", new_recipe_path, class: 'px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300' %>
+        <%= link_to "Create Inventory", new_inventory_path, class: 'mt-2 px-4 py-2 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-600 focus:outline-none focus:ring focus:border-green-300' %>
       </div>
     </div>
 
     <!-- Add even more featured recipe cards here -->
+
     <!-- Card 4 -->
     <div class="bg-white shadow-md rounded-lg">
       <img src="https://images.unsplash.com/photo-1523033904333-243d0283acae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Creamy Chicken Alfredo" class="h-64 w-full object-cover rounded-t-lg">
@@ -48,6 +52,8 @@
         <h3 class="text-xl font-bold mb-2 text-gray-800">Creamy Chicken Alfredo</h3>
         <p class="text-gray-600 mb-4">Savor the rich and creamy Alfredo sauce combined with tender chicken pieces.</p>
         <%= link_to "Create Food", foods_path, class: 'bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-full' %>
+        <%= link_to "Create Recipe", new_recipe_path, class: 'px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300' %>
+        <%= link_to "Create Inventory", new_inventory_path, class: 'mt-2 px-4 py-2 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-600 focus:outline-none focus:ring focus:border-green-300' %>
       </div>
     </div>
 
@@ -58,6 +64,8 @@
         <h3 class="text-xl font-bold mb-2 text-gray-800">Mouthwatering Cheesecake</h3>
         <p class="text-gray-600 mb-4">Indulge in the creamy and luscious taste of this classic dessert.</p>
         <%= link_to "Create Food", foods_path, class: 'bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-full' %>
+        <%= link_to "Create Recipe", new_recipe_path, class: 'px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300' %>
+        <%= link_to "Create Inventory", new_inventory_path, class: 'mt-2 px-4 py-2 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-600 focus:outline-none focus:ring focus:border-green-300' %>
       </div>
     </div>
 
@@ -68,6 +76,8 @@
         <h3 class="text-xl font-bold mb-2 text-gray-800">Spicy Beef Tacos</h3>
         <p class="text-gray-600 mb-4">Treat your taste buds to these flavorful and delicious beef tacos.</p>
         <%= link_to "Create Food", foods_path, class: 'bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-full' %>
+        <%= link_to "Create Recipe", new_recipe_path, class: 'px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300' %>
+        <%= link_to "Create Inventory", new_inventory_path, class: 'mt-2 px-4 py-2 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-600 focus:outline-none focus:ring focus:border-green-300' %>
       </div>
     </div>
   </div>
