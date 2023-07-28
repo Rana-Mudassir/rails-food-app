@@ -4,49 +4,37 @@ class InventoriesController < ApplicationController
   end
 
   def show
-    @inventory = Inventory.find(params[:id])
-    @food = Food.new
-  end
-
-  def new
-    @inventory = Inventory.new
-  end
-
-  def create
-    @user = current_user
-    @inventory = @user.inventories.build(inventory_params)
-
-    respond_to do |format|
-      if @inventory.save
-        format.html { redirect_to inventories_path, notice: 'Inventory was successfully created.' }
-        format.json { render :show, status: :created, location: @inventory }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @inventory.errors, status: :unprocessable_entity }
-      end
-    end
+    @inventory = Inventory.includes(inventory_foods: :food).find(params[:id])
+    @inventory_id = @inventory.id
+    @inventory_food = @inventory.inventory_foods
   end
 
   def destroy
-    @inventory = Inventory.find_by(id: params[:id])
+    @inventory = Inventory.find(params[:id])
 
-    if @inventory
-      @inventory.destroy
-      respond_to do |format|
-        format.html { redirect_to inventories_url, notice: 'Inventory was successfully destroyed.' }
-        format.json { head :no_content }
-      end
+    if @inventory.destroy
+      flash[:notice] = 'Inventory deleted successfully!'
+      redirect_to inventories_path
     else
-      respond_to do |format|
-        format.html { redirect_to inventories_url, notice: 'Inventory does not exist.' }
-        format.json { head :no_content }
-      end
+      flash[:alert] = 'Failed to delete the inventory. Please try again.'
+      redirect_to inventory_path(@inventory)
     end
   end
 
-  private
+  def new
+    @new_inventory = Inventory.new
+  end
 
-  def inventory_params
-    params.require(:inventory).permit(:name)
+  def create
+    inventory = Inventory.new(user: current_user, name: params[:inventory][:name])
+    respond_to do |format|
+      if inventory.save
+        flash[:notice] = 'Created an inventory succesfully'
+        format.html { redirect_to '/inventories' }
+      else
+        flash[:notice] = 'Failed to create an inventory. Try again'
+        format.html { redirect_to '/inventories/new' }
+      end
+    end
   end
 end

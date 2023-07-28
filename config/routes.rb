@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   root "pages#home"
 
   resources :inventories do
-    resources :inventory_foods, only: [:new, :create, :destroy]
+    resources :inventory_foods, except: :show
   end
 
 end
