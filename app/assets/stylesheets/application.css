@@ -34,3 +34,13 @@
   background-color: #1976D2;
   color: #fff;
 }
+
+/* navigation */
+ul {
+  display: none;
+}
+
+/* Show the dropdown content when hovering over the button */
+.relative:hover ul {
+  display: block;
+}
