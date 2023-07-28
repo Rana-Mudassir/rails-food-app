@@ -1,16 +1,20 @@
-<section>
+<section class="container mx-auto mt-8">
   <% @public_recipes.each do |recipe| %>
-    <div class="container mx-auto">
-      <div class="border border-2 rounded-lg p-4 flex items-center mb-3">
-        <div class="flex-grow">
-          <span class="block text-2xl font-semibold">
-            <%= link_to recipe.name, recipe, class: "text-blue-600 hover:underline" %>
-          </span>
-          <span>By: <%= recipe.user.name %></span>
+    <div class="border border-gray-300 rounded-lg p-4 mb-4 max-w-xl mx-auto">
+      <div class="flex items-center justify-between">
+        <div>
+          <h2 class="text-xl font-semibold text-blue-600 hover:underline">
+            <%= link_to recipe.name, recipe %>
+          </h2>
+          <p class="text-gray-600">By: <%= recipe.user.name %></p>
         </div>
-        <div class="flex-grow-0">
-          <span class="block">Total food items: <%= recipe.foods.count %></span>
-          <span>Total price: <%= recipe.foods.sum { |public_food| public_food.price } %></span>
+        <div>
+          <p class="text-gray-600">
+            Total food items: <%= recipe.foods.count %>
+          </p>
+          <p class="text-gray-600">
+            Total price: <%= number_to_currency(recipe.foods.sum { |public_food| public_food.price }) %>
+          </p>
         </div>
       </div>
     </div>

@@ -1,6 +1,7 @@
 class FoodsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_food, only: %i[destroy]
+  before_action :set_food, only: [:destroy]
+
   def index
     @foods = Food.all
   end
@@ -23,12 +24,17 @@ class FoodsController < ApplicationController
   end
 
   def destroy
-    @food.destroy
-    respond_to do |format|
-      format.html { redirect_to foods_url, notice: 'Food was successfully destroyed.' }
-      format.json { head :no_content }
+    @food = Food.find(params[:id])
+    @inventory_foods = @food.inventory_foods
+    @inventory_foods.destroy_all
+    @food.recipe_foods.destroy_all
+    if @food.destroy
+      flash[:notice] = 'Food was successfully destroyed.'
+      redirect_to foods_url
+    else
     end
   end
+  
 
   private
 
