@@ -12,6 +12,7 @@ class FoodsController < ApplicationController
 
   def create
     @food = Food.new(food_params)
+    calculate_price(@food) if @food.quantity_unit.present?
     respond_to do |format|
       if @food.save
         format.html { redirect_to foods_path, notice: 'Food was successfully created.' }
@@ -41,6 +42,10 @@ class FoodsController < ApplicationController
   end
 
   def food_params
-    params.require(:food).permit(:name, :measurement_unit, :price)
+    params.require(:food).permit(:name, :measurement_unit, :price, :quantity_unit)
+  end
+
+  def calculate_price(food)
+    food.price = food.price * food.quantity_unit.to_f
   end
 end

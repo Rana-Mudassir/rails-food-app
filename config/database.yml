@@ -87,5 +87,6 @@ production:
   <<: *default
   database: rails-group-project-2
   username: rails-group-project-2
+
   password: <%= ENV["rails_group_project_DATABASE_PASSWORD"] %>
   
