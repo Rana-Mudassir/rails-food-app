@@ -1,6 +1,7 @@
 class RecipesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_recipe, only: %i[destroy]
+
   def index
     @recipes = Recipe.all
   end
@@ -38,15 +39,13 @@ class RecipesController < ApplicationController
     end
   end
 
-  def update
-    @recipe = Recipe.find_by(id: params[:id])
-    public = params[:public] == '1'
-    if @recipe.update_attribute(:public, public)
-      flash[:notice] = "Recipe updated successfully."
-    else
-      flash[:alert] = "Failed to update recipe."
-    end
-    redirect_to recipe_path(@recipe)
+  def shopping_list
+    @recipe_id = params[:recipe_id]
+    @inventory_id = params[:inventory_id]
+    @recipe = Recipe.includes(recipe_foods: :food).find(@recipe_id)
+    @inventory = Inventory.find(@inventory_id)
+    inventory_foods_id = @inventory.foods.pluck(:id)
+    @missing_foods = @recipe.recipe_foods.reject { |food_recipe| inventory_foods_id.include?(food_recipe.food_id) }
   end
 
   private
@@ -56,7 +55,6 @@ class RecipesController < ApplicationController
   end
 
   def recipe_params
-    params.require(:recipe).permit(:name, :preparation_time, :cooking_time, :description, :public)
+    params.require(:recipe).permit(:name, :preparation_time, :cooking_time, :description, :public, :user)
   end
-  
 end

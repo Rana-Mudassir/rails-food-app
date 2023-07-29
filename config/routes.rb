@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   end
 
   #get 'users/index'
-
+  get 'shopping_list', to: 'recipes#shopping_list', as: 'shopping_list'
 
   root "pages#home"
 

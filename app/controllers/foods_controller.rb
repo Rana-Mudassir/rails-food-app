@@ -28,13 +28,11 @@ class FoodsController < ApplicationController
     @inventory_foods = @food.inventory_foods
     @inventory_foods.destroy_all
     @food.recipe_foods.destroy_all
-    if @food.destroy
-      flash[:notice] = 'Food was successfully destroyed.'
-      redirect_to foods_url
-    else
-    end
+    return unless @food.destroy
+
+    flash[:notice] = 'Food was successfully destroyed.'
+    redirect_to foods_url
   end
-  
 
   private
 
