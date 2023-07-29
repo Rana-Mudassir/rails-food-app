@@ -5,7 +5,7 @@ RSpec.describe 'Inventories', type: :request do
     @user = User.create(name: 'Test', email: 'test2@example.com', password: 'password')
     sign_in @user
   end
-  
+
   describe 'testing request' do
     it 'GET /inventories' do
       user = User.create!(name: 'Goodman', email: 'bogdan@example.com', password: 'password')

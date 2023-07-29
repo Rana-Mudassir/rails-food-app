@@ -35,10 +35,10 @@ rescue ActiveRecord::PendingMigrationError => e
   puts e.to_s.strip
   exit 1
 end
-RSpec.configure do |config|  
-    config.include Devise::Test::IntegrationHelpers, type: :request  
+RSpec.configure do |config|
+  config.include Devise::Test::IntegrationHelpers, type: :request
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
-  config.fixture_path = "#{::Rails.root}/spec/fixtures"
+  config.fixture_path = "#{Rails.root}/spec/fixtures"
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
@@ -80,6 +80,4 @@ Shoulda::Matchers.configure do |config|
   end
 end
 
-
 Capybara.javascript_driver = :selenium_chrome_headless
-

@@ -37,12 +37,12 @@ RSpec.describe 'Foods', type: :request do
       expect(Food.last.name).to eq 'Food #n'
       expect(response).to render_template('new')
       expect(response).to have_http_status(:ok)
-    end    
-  
+    end
+
     it 'DELETE /foods/:id should not render show template' do
-        food = Food.create!(name: 'Food #n', measurement_unit: 'g', price: 10)
-        delete("/foods/#{food.id}")
-        expect(response.body).not_to include('Food #n')
+      food = Food.create!(name: 'Food #n', measurement_unit: 'g', price: 10)
+      delete("/foods/#{food.id}")
+      expect(response.body).not_to include('Food #n')
     end
   end
 end
