@@ -1,11 +1,14 @@
 class RecipeFoodsController < ApplicationController
   def new
+    @recipe = Recipe.find(params[:recipe_id])
     @foods = Food.all
   end
 
   def create
     @recipe = Recipe.find(params[:recipe_id])
     @new_recipe = @recipe.recipe_foods.new(recipe_food_params)
+    @foods = Food.all
+
     if @new_recipe.save
       flash[:notice] = 'Ingredient was added successfully.'
       redirect_to recipe_path(@recipe.id)
