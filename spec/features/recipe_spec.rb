@@ -10,8 +10,10 @@ RSpec.describe 'Recipes', type: :feature do
 
   describe 'Recipe list index page' do
     before do
-      @recipe1 = Recipe.create(user: user, name: 'Test Recipe 1', preparation_time: 10, cooking_time: 20, description: 'A delicious recipe', public: true)
-      @recipe2 = Recipe.create(user: user, name: 'Test Recipe 2', preparation_time: 15, cooking_time: 25, description: 'Another delicious recipe', public: true)
+      @recipe1 = Recipe.create(user:, name: 'Test Recipe 1', preparation_time: 10, cooking_time: 20,
+                               description: 'A delicious recipe', public: true)
+      @recipe2 = Recipe.create(user:, name: 'Test Recipe 2', preparation_time: 15, cooking_time: 25,
+                               description: 'Another delicious recipe', public: true)
       visit recipes_path
     end
 

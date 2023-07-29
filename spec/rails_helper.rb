@@ -7,7 +7,6 @@ abort('The Rails environment is running in production mode!') if Rails.env.produ
 require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 
-
 require 'shoulda/matchers'
 
 require 'capybara/rspec'
@@ -44,9 +43,9 @@ RSpec.configure do |config|
   # instead of true.
   config.use_transactional_fixtures = true
 
-   # Changes Mudassir Made
-   config.include Devise::Test::IntegrationHelpers, type: :request
-   config.include Devise::Test::IntegrationHelpers, type: :feature
+  # Changes Mudassir Made
+  config.include Devise::Test::IntegrationHelpers, type: :request
+  config.include Devise::Test::IntegrationHelpers, type: :feature
 
   # You can uncomment this line to turn off ActiveRecord support entirely.
   # config.use_active_record = false
