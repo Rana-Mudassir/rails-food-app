@@ -29,13 +29,14 @@ class InventoriesController < ApplicationController
   end
 
   def create
-    inventory = Inventory.new(user: current_user, name: params[:inventory][:name])
+    inventory = Inventory.new(user: current_user, name: params[:inventory][:name],
+                              description: params[:inventory][:description])
     respond_to do |format|
       if inventory.save
-        flash[:notice] = 'Created an inventory succesfully'
+        flash[:notice] = 'Created an inventory successfully'
         format.html { redirect_to '/inventories' }
       else
-        flash[:notice] = 'Failed to create an inventory. Try again'
+        flash[:error] = "Failed to create an inventory: #{inventory.errors.full_messages.join(', ')}"
         format.html { redirect_to '/inventories/new' }
       end
     end
