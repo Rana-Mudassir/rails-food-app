@@ -1,0 +1,47 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+.custom-border {
+  border: 1px solid #ccc;
+
+  /* Define the border style */
+}
+
+.custom-button {
+  /* Your custom button styles here */
+  background-color: #666;
+  color: #000;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.custom-button:hover {
+  background-color: #1976d2;
+  color: #fff;
+}
+
+/* navigation */
+ul {
+  display: none;
+}
+
+/* Show the dropdown content when hovering over the button */
+.relative:hover ul {
+  display: block;
+}

@@ -1,0 +1,15 @@
+<div class="flex justify-center mt-24 mb-48 container mx-auto">
+  <div class="w-3/5 bg-white shadow-lg p-10">
+    <h1 class="text-2xl font-bold border-b-2">Add new inventory</h1>
+    <%= form_with model: @new_inventory, url: '/inventories' do |form| %>
+      <br>
+      <%= form.label :name, class: 'font-semibold pb-1 mt-4' %><br />
+      <%= form.text_field :name, placeholder: 'Name of the inventory', class: 'py-2 px-4 border w-full focus:outline-blue-400', required: true %>
+      <br>
+      <%= form.label :description, class: 'font-semibold pb-1 mt-4' %><br />
+     <%= form.text_area :description, placeholder: 'Description of the inventory', class: 'py-2 px-4 border w-full focus:outline-blue-400', required: true %>
+      <br>
+      <%= form.submit class: 'bg-blue-500 py-3 px-6 text-white cursor-pointer hover:bg-blue-700 mt-4' %>
+    <% end %>
+  </div>
+</div>

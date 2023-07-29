@@ -1,0 +1,24 @@
+<% if current_user %>
+      <ul class="flex space-x-4">
+        <li>
+          <%= link_to "Home", root_path, class: "font-medium text-blue-700" %>
+        </li>
+        <li>
+          <%= link_to "Foods", foods_path, class: "font-medium text-blue-700" %>
+        </li>
+        <li>
+          <%= link_to "Recipes", recipes_path, class: "font-medium text-blue-700" %>
+        </li>
+        <li>
+          <%= link_to "Public Recipes", public_recipes_path, class: "font-medium text-blue-700" %>
+        </li>
+        <li>
+          <%= link_to "Inventories", inventories_path, class: "font-medium text-blue-700" %>
+        </li>
+        <li>
+        <%= button_to 'Sign Out', destroy_user_session_path, method: :delete, data: { confirm: 'Are you sure you want to sign out?' }, class: 'w-full text-left pl-4' %>
+        </li>
+      </ul>
+    <% else %>
+      <%= link_to "Sign In", new_user_session_path, class: "block py-2 px-4 text-white rounded bg-blue-500 hover:bg-blue-600 font-semibold" %>
+    <% end %>
