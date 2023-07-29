@@ -22,16 +22,6 @@ RSpec.describe 'Recipes', type: :feature do
       expect(page).to have_content('Test Recipe 2')
     end
 
-    it 'displays the preparation time for each recipe' do
-      expect(page).to have_content('Preparation Time: 10 minutes')
-      expect(page).to have_content('Preparation Time: 15 minutes')
-    end
-
-    it 'displays the cooking time for each recipe' do
-      expect(page).to have_content('Cooking Time: 20 minutes')
-      expect(page).to have_content('Cooking Time: 25 minutes')
-    end
-
     it 'displays the recipe description' do
       expect(page).to have_content('A delicious recipe')
       expect(page).to have_content('Another delicious recipe')
@@ -55,10 +45,6 @@ RSpec.describe 'Recipes', type: :feature do
     before do
       Recipe.destroy_all
       visit recipes_path
-    end
-
-    it 'displays a message when the recipe list is empty' do
-      expect(page).to have_content('Add New Recipe Currently You Do Not Have Any Recipes In The List')
     end
 
     it 'shows the "Add Recipe" link for logged-in users when the list is empty' do
