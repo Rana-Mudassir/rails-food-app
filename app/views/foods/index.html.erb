@@ -4,6 +4,7 @@
       <%= link_to "Add Food", new_food_path, class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4" %>
     <% end %>
   </div>
+
   <% if @foods.present? %>
     <table class="w-full border-collapse border border-gray-400">
       <thead>
@@ -18,8 +19,14 @@
         <% @foods.each do |food| %>
           <tr>
             <td class="border border-gray-400 px-4 py-2"><%= food.name %></td>
-            <td class="border border-gray-400 px-4 py-2"><%= food.measurement_unit %></td>
-            <td class="border border-gray-400 px-4 py-2">$<%= food.price %></td>
+            <td class="border border-gray-400 px-4 py-2"><%= food.measurement_unit %> <%= food.quantity_unit %></td>
+            <td class="border border-gray-400 px-4 py-2">
+              <% if food.quantity_unit.present? %>
+                $<%= food.price %>
+              <% else %>
+                $<%= food.price %>
+              <% end %>
+            </td>
             <td class="border border-gray-400 px-4 py-2">
               <% if current_user %>
                 <%= button_to "DELETE", [food], method: :delete, class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %>
@@ -32,6 +39,6 @@
       </tbody>
     </table>
   <% else %>
-  <h3 class="text-2xl font-semibold mb-4 text-center">Add New Foods Currently You Do Not Have Any Foods In The List</h3>
+    <h3 class="text-2xl font-semibold mb-4 text-center">Add New Foods Currently You Do Not Have Any Foods In The List</h3>
   <% end %>
 </div>

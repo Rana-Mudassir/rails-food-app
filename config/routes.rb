@@ -10,15 +10,14 @@ Rails.application.routes.draw do
       root to: "devise/sessions#new", as: :unauthenticated_root
     end
   end
-  resources :foods
-  resources :public_recipes, only: %i[index]
 
+  resources :foods
+  resources :public_recipes, only: [:index]
 
   resources :recipes do 
-    resources :recipe_foods, only: %i[create destroy new]
+    resources :recipe_foods, only: [:create, :destroy, :index, :new]
   end
 
-  #get 'users/index'
   get 'shopping_list', to: 'recipes#shopping_list', as: 'shopping_list'
 
   root "pages#home"
@@ -26,6 +25,4 @@ Rails.application.routes.draw do
   resources :inventories do
     resources :inventory_foods, except: :show
   end
-
 end
-

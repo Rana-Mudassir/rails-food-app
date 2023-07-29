@@ -7,4 +7,10 @@ class Food < ApplicationRecord
   validates :name, presence: true
   validates :measurement_unit, presence: true
   validates :price, presence: true
+
+  private
+
+  def calculate_price
+    self.price = self.price * self.quantity_unit.to_f if self.quantity_unit.present?
+  end
 end

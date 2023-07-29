@@ -48,6 +48,17 @@ class RecipesController < ApplicationController
     @missing_foods = @recipe.recipe_foods.reject { |food_recipe| inventory_foods_id.include?(food_recipe.food_id) }
   end
 
+  def update
+    @recipe = Recipe.find_by(id: params[:id])
+    public = params[:public] == '1'
+    if @recipe.update_attribute(:public, public)
+      flash[:notice] = "Recipe updated successfully."
+    else
+      flash[:alert] = "Failed to update recipe."
+    end
+    redirect_to recipe_path(@recipe)
+  end
+
   private
 
   def set_recipe
