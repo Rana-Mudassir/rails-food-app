@@ -73,4 +73,9 @@ group :test do
   gem 'webdrivers'
 end
 
-gem 'cancancan'
+group :development, :test do
+  gem 'rails-controller-testing'
+  gem 'rspec-rails'
+end
+
+gem 'shoulda-matchers', require: false
