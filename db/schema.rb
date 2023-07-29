@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_27_115026) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_29_105548) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -20,6 +20,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_27_115026) do
     t.decimal "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "quantity_unit"
   end
 
   create_table "inventories", force: :cascade do |t|
@@ -46,6 +47,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_27_115026) do
     t.bigint "food_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "quantity_unit"
     t.index ["food_id"], name: "index_recipe_foods_on_food_id"
     t.index ["recipe_id"], name: "index_recipe_foods_on_recipe_id"
   end

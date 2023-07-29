@@ -9,6 +9,7 @@ gem 'rails', '~> 7.0.6'
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'sprockets-rails'
 
+gem 'jquery-rails'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1'
 
@@ -78,3 +79,11 @@ gem 'cancancan'
 group :test do
   gem 'shoulda-matchers', '~> 5.0'
 end
+
+group :development, :test do
+  gem 'rails-controller-testing'
+  gem 'rspec-rails'
+end
+
+gem 'shoulda-matchers', require: false
+

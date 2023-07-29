@@ -4,7 +4,6 @@
       <%= link_to "Add Recipe", new_recipe_path, class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4", id: "add-recipe-link" %>
     <% end %>
   </div>
-  <% if @recipe.present? %>
   <% @recipes.each do |recipe| %>
 <div class="border border-gray-400 p-4 mb-4 flex flex-col md:flex-row">
   <div class="flex-shrink-0 md:mb-0 md:mr-4 w-24">
@@ -24,8 +23,5 @@
   </div>
 </div>
 
-  <% end %>
-  <% else %>
-    <h3 class="text-2xl font-semibold mb-4 text-center">Add New Recipe Currently You Do Not Have Any Foods In The List</h3>
   <% end %>
 </div>
