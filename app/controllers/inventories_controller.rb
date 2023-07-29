@@ -11,15 +11,20 @@ class InventoriesController < ApplicationController
 
   def destroy
     @inventory = Inventory.find(params[:id])
-
+  
+    # Delete the associated inventory_foods first
+    @inventory.inventory_foods.destroy_all
+  
     if @inventory.destroy
       flash[:notice] = 'Inventory deleted successfully!'
       redirect_to inventories_path
     else
-      flash[:alert] = 'Failed to delete the inventory. Please try again.'
-      redirect_to inventory_path(@inventory)
+      # Handle the case when the inventory cannot be deleted
+      flash[:error] = 'Error deleting inventory!'
+      redirect_to inventories_path
     end
   end
+  
 
   def new
     @new_inventory = Inventory.new
