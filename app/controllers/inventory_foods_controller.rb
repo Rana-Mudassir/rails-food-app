@@ -5,6 +5,7 @@ class InventoryFoodsController < ApplicationController
     @foods = Food.order(:name)
     render :new
   end
+
   def create
     @inventory = Inventory.find(params[:inventory_id])
     @inventory_food = @inventory.inventory_foods.build(inventory_food_params)
@@ -21,6 +22,7 @@ class InventoryFoodsController < ApplicationController
       render :new
     end
   end
+
   def destroy
     @inventory_food = InventoryFood.find(params[:id])
     inventory = @inventory_food.inventory
@@ -28,7 +30,9 @@ class InventoryFoodsController < ApplicationController
     flash[:notice] = 'Inventory food was successfully removed'
     redirect_to "/inventories/#{inventory.id}"
   end
+
   private
+
   def inventory_food_params
     params.require(:inventory_food).permit(:inventory_id, :food_id, :quantity)
   end
