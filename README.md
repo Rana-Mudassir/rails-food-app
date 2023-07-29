@@ -27,7 +27,7 @@
 - [❓ FAQ (OPTIONAL)](#faq)
 - [📝 License](#license)
 
-# 📖 [Blog APP] <a name="about-project"></a>
+# 📖 Recipe APP <a name="about-project"></a>
 
 **Reicpe App** Helps users to login keep their credentials sava and also create foods, Reicpes, Inventories and keep in to database thru a user friendly UI.
 
