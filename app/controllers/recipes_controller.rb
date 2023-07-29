@@ -52,9 +52,9 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find_by(id: params[:id])
     public = params[:public] == '1'
     if @recipe.update_attribute(:public, public)
-      flash[:notice] = "Recipe updated successfully."
+      flash[:notice] = 'Recipe updated successfully.'
     else
-      flash[:alert] = "Failed to update recipe."
+      flash[:alert] = 'Failed to update recipe.'
     end
     redirect_to recipe_path(@recipe)
   end

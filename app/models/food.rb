@@ -11,6 +11,6 @@ class Food < ApplicationRecord
   private
 
   def calculate_price
-    self.price = self.price * self.quantity_unit.to_f if self.quantity_unit.present?
+    self.price = price * quantity_unit.to_f if quantity_unit.present?
   end
 end
