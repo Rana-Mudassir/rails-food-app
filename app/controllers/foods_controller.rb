@@ -34,7 +34,6 @@ class FoodsController < ApplicationController
     redirect_to foods_url
   end
 
-
   private
 
   def set_food
