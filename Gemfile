@@ -80,9 +80,9 @@ group :test do
   gem 'shoulda-matchers', '~> 5.0'
 end
 
-group :development, :test do
-  gem 'rails-controller-testing'
-  gem 'rspec-rails'
-end
+# group :development, :test do
+#   gem 'rails-controller-testing'
+#   gem 'rspec-rails'
+# end
 
 # gem 'shoulda-matchers', require: false

@@ -14,7 +14,7 @@ RSpec.describe 'Foods', type: :request do
     end
 
     it 'GET /foods/:id' do
-      food = Food.create!(name: 'Food #1', measurement_unit: 'h', price: 15)
+      Food.create!(name: 'Food #1', measurement_unit: 'h', price: 15)
       get('/foods/new')
       expect(response).to render_template('new')
       expect(response).to have_http_status(:ok)

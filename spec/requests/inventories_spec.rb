@@ -8,7 +8,7 @@ RSpec.describe 'Inventories', type: :request do
 
   describe 'testing request' do
     it 'GET /inventories' do
-      user = User.create!(name: 'Goodman', email: 'bogdan@example.com', password: 'password')
+      User.create!(name: 'Goodman', email: 'bogdan@example.com', password: 'password')
       get('/inventories')
       expect(response).to render_template('index')
       expect(response).to have_http_status(:ok)
@@ -30,7 +30,7 @@ RSpec.describe 'Inventories', type: :request do
     end
 
     it 'POST /inventories' do
-      user = User.create!(name: 'Goodman', email: 'bogdan@example.com', password: 'password')
+      User.create!(name: 'Goodman', email: 'bogdan@example.com', password: 'password')
       post('/inventories', params: { inventory: { name: 'Inventory #n' } })
       get("/inventories/#{Inventory.last.id}")
       expect(Inventory.last.name).to eq 'Inventory #n'
