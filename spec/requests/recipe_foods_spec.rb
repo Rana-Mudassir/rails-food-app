@@ -58,10 +58,10 @@ RSpec.describe 'RecipeFoods', type: :request do
     end
     it 'destroys the recipe food' do
       expect do
-        delete recipe_recipe_food_path(recipe_id: @recipe.id, id: recipe_food.id) # Use recipe_recipe_food_path with recipe_id and id
+        delete recipe_recipe_food_path(recipe_id: @recipe.id, id: recipe_food.id)
       end.to change(RecipeFood, :count).by(-1)
 
-      expect(response).to redirect_to(recipe_path(@recipe)) # Use @recipe instead of recipe
+      expect(response).to redirect_to(recipe_path(@recipe))
       expect(flash[:notice]).to eq('Ingredient was deleted')
     end
   end

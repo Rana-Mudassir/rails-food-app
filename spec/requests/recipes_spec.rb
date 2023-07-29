@@ -37,8 +37,8 @@ RSpec.describe 'Recipes', type: :request do
       it 'creates a new recipe' do
         expect do
           post recipes_path,
-               params: { recipe: { name: 'New Recipe', preparation_time: 10, cooking_time: 20, description: 'A delicious recipe',
-                                   public: true } }
+               params: { recipe: { name: 'New Recipe', preparation_time: 10, cooking_time: 20,
+                                   description: 'A delicious recipe', public: true } }
         end.to change(Recipe, :count).by(1)
 
         expect(response).to redirect_to(recipes_path)
