@@ -7,6 +7,10 @@
 
 > # Recipe App
 
+![Project Screenshot](./public/foodapp1.PNG)
+![Project Screenshot](./public/foodapp2.PNG)
+![Project Screenshot](./public/foodapp3.PNG)
+
 # 📗 Table of Contents
 
 - [📖 About the Project](#about-project)
@@ -29,7 +33,7 @@
 
 # 📖 Recipe APP <a name="about-project"></a>
 
-**Reicpe App** Helps users to login keep their credentials sava and also create foods, Reicpes, Inventories and keep in to database thru a user friendly UI.
+**Reicpe App** Helps users to Register, keep their credentials save and also create foods, Reicpes, Inventories lists and keep in to database through a user friendly UI.
 
 ## 🛠 Built With <a name="built-with"></a>
 
@@ -38,6 +42,7 @@
     <ul>
       <li><a href="https://reactjs.org/">Ruby on Rails</a></li>
       <li><a href="https://reactjs.org/">PostgreSQL</a></li>
+      <li><a href="https://reactjs.org/">Rspec</a></li>
     </ul>
 
 ### Key Features <a name="key-features"></a>
