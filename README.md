@@ -7,9 +7,13 @@
 
 > # Recipe App
 
-![Project Screenshot](./public/foodapp1.PNG)
-![Project Screenshot](./public/foodapp2.PNG)
-![Project Screenshot](./public/foodapp3.PNG)
+<div align="center">
+  <img src="./public/foodapp1.PNG" width="400" height="300" alt="Project Screenshot">
+  <img src="./public/foodapp2.PNG" width="400" height="300" alt="Project Screenshot">
+</div>
+<div align="center">
+  <img src="./public/foodapp3.PNG" width="400" height="300" alt="Project Screenshot">
+</div>
 
 # 📗 Table of Contents
 
